@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>探索 前行</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://wangzhipeng.github.io/"/>
+  <updated>2018-09-15T18:13:00.165Z</updated>
+  <id>https://wangzhipeng.github.io/</id>
+  
+  <author>
+    <name>William Wang</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>go</title>
+    <link href="https://wangzhipeng.github.io/2018/09/16/go/"/>
+    <id>https://wangzhipeng.github.io/2018/09/16/go/</id>
+    <published>2018-09-15T18:10:10.000Z</published>
+    <updated>2018-09-15T18:13:00.165Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://wangzhipeng.github.io/2018/09/16/hello-world/"/>
+    <id>https://wangzhipeng.github.io/2018/09/16/hello-world/</id>
+    <published>2018-09-15T17:53:31.155Z</published>
+    <updated>2018-09-15T17:53:31.155Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

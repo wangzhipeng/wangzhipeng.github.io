@@ -18,15 +18,19 @@ ga('send', 'pageview');
 
 
   
-  <title>探索 前行</title>
+  <title>AutoScalingWorker | 探索 前行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="探索 前行">
-<meta property="og:url" content="https://wangzhipeng.github.io/index.html">
+  <meta name="description" content="介绍传统基于channel的生产者与消费者模式，采用固定消费者个数形式，在面对生产数量猛增情况时，不能做到动态伸缩，容易致使队列积压。基于此 autoscalingworker 采用检测队列积压情况动态创建与销毁worker，来保证消费与避免性能的浪费。 探索首先我们需要定义我们Worker的上下限，基于多少队列积压情况进行扩容与缩容。代码如下：12345678910111213type Auto">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AutoScalingWorker">
+<meta property="og:url" content="https://wangzhipeng.github.io/2018/09/23/AutoScalingWorker/index.html">
 <meta property="og:site_name" content="探索 前行">
+<meta property="og:description" content="介绍传统基于channel的生产者与消费者模式，采用固定消费者个数形式，在面对生产数量猛增情况时，不能做到动态伸缩，容易致使队列积压。基于此 autoscalingworker 采用检测队列积压情况动态创建与销毁worker，来保证消费与避免性能的浪费。 探索首先我们需要定义我们Worker的上下限，基于多少队列积压情况进行扩容与缩容。代码如下：12345678910111213type Auto">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-23T05:12:16.011Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="探索 前行">
+<meta name="twitter:title" content="AutoScalingWorker">
+<meta name="twitter:description" content="介绍传统基于channel的生产者与消费者模式，采用固定消费者个数形式，在面对生产数量猛增情况时，不能做到动态伸缩，容易致使队列积压。基于此 autoscalingworker 采用检测队列积压情况动态创建与销毁worker，来保证消费与避免性能的浪费。 探索首先我们需要定义我们Worker的上下限，基于多少队列积压情况进行扩容与缩容。代码如下：12345678910111213type Auto">
   
     <link rel="alternate" href="/atom.xml" title="探索 前行" type="application/atom+xml">
   
@@ -73,9 +77,7 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-AutoScalingWorker" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AutoScalingWorker" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/23/AutoScalingWorker/" class="article-date">
   <time datetime="2018-09-23T04:34:04.000Z" itemprop="datePublished">2018-09-23</time>
@@ -88,8 +90,8 @@ ga('send', 'pageview');
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/23/AutoScalingWorker/">AutoScalingWorker</a>
+    <h1 class="article-title" itemprop="name">
+      AutoScalingWorker
     </h1>
   
 
@@ -115,48 +117,19 @@ ga('send', 'pageview');
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-go" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/16/go/" class="article-date">
-  <time datetime="2018-09-15T18:10:10.000Z" itemprop="datePublished">2018-09-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/16/go/">go</a>
-    </h1>
+    <a href="/2018/09/16/go/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">go</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>go 关于slice的学习</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://wangzhipeng.github.io/2018/09/16/go/" data-id="cjmeegfcj00012nhet7ykjfo9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         

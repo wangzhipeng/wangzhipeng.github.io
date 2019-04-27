@@ -17,6 +17,15 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
 
 
+  <!-- Google AdSense -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2270522402180498",
+    enable_page_level_ads: true
+  });
+</script>
+<!-- End Google AdSense -->
   
   <title>探索 前行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -75,6 +84,49 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-rancheros" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/17/rancheros/" class="article-date">
+  <time datetime="2018-10-17T15:00:17.000Z" itemprop="datePublished">2018-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/17/rancheros/">rancheros</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Launching-RancherOS-using-Docker-Machine"><a href="#Launching-RancherOS-using-Docker-Machine" class="headerlink" title="Launching RancherOS using Docker Machine"></a>Launching RancherOS using Docker Machine</h2><p>Before moving forward, you’ll need to have Docker Machine and VirtualBox installed. Once you have VirtualBox and Docker Machine installed, it’s just one command to get RancherOS running.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker-machine create -d virtualbox \</span><br><span class="line">        --virtualbox-boot2docker-url https://releases.rancher.com/os/latest/rancheros.iso \</span><br><span class="line">        --virtualbox-memory 2048 \</span><br><span class="line">        &lt;MACHINE-NAME&gt;</span><br></pre></td></tr></table></figure>
+<p>That’s it! You’re up and running a RancherOS instance.<br>To log into the instance, just use the docker-machine command.</p>
+<h2 id="ssh-登录"><a href="#ssh-登录" class="headerlink" title="ssh 登录"></a>ssh 登录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-machine ssh &lt;MACHINE-NAME&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="切换docker镜像"><a href="#切换docker镜像" class="headerlink" title="切换docker镜像"></a>切换docker镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo ros c set  rancher.bootstrap_docker.registry_mirror  https://registry.docker-cn.com</span><br><span class="line"></span><br><span class="line">sudo ros c set rancher.system_docker.registry_mirror https://registry.docker-cn.com</span><br><span class="line"></span><br><span class="line">sudo ros c set rancher.docker.registry_mirror https://registry.docker-cn.com</span><br><span class="line"></span><br><span class="line">sudo ros c set rancher.defaults.registry_mirror https://registry.docker-cn.com</span><br></pre></td></tr></table></figure>
+<h2 id="重启已加载配置"><a href="#重启已加载配置" class="headerlink" title="重启已加载配置"></a>重启已加载配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<h2 id="切换为Ubuntu"><a href="#切换为Ubuntu" class="headerlink" title="切换为Ubuntu"></a>切换为Ubuntu</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ros console switch ubuntu</span><br><span class="line">sudo ros engine switch docker-17.03.2-ce</span><br></pre></td></tr></table></figure>
+<h2 id="替换源"><a href="#替换源" class="headerlink" title="替换源"></a>替换源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wangzhipeng.github.io/2018/10/17/rancheros/" data-id="cjuzlpgnc0002xther2o18g4j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-AutoScalingWorker" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/23/AutoScalingWorker/" class="article-date">
@@ -109,7 +161,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://wangzhipeng.github.io/2018/09/23/AutoScalingWorker/" data-id="cjmeegfcd00002nhey9tr8rtp" class="article-share-link">Share</a>
+      <a data-url="https://wangzhipeng.github.io/2018/09/23/AutoScalingWorker/" data-id="cjuzlpgn10000xthe9d97b6f7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -119,10 +171,10 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-go" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-mysql大小写" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/09/16/go/" class="article-date">
-  <time datetime="2018-09-15T18:10:10.000Z" itemprop="datePublished">2018-09-16</time>
+    <a href="/2018/09/18/mysql大小写/" class="article-date">
+  <time datetime="2018-09-18T12:10:46.000Z" itemprop="datePublished">2018-09-18</time>
 </a>
     
   </div>
@@ -133,7 +185,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/16/go/">go</a>
+      <a class="article-title" href="/2018/09/18/mysql大小写/">关于MySql区分大小写</a>
     </h1>
   
 
@@ -141,14 +193,56 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>go 关于slice的学习</p>
+        <h2 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h2><p>mysql大小写敏感配置相关的两个参数，lower_case_file_system 和 lower_case_table_names。</p>
+<p>查看当前mysql的大小写敏感配置<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">global</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%lower_case%'</span>;</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>Variable_name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lower_case_file_system</td>
+<td>ON</td>
+</tr>
+<tr>
+<td>lower_case_table_names</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>lower_case_file_system 表示当前系统文件是否大小写敏感，只读参数，无法修改。</p>
+<ul>
+<li>ON  大小写不敏感 </li>
+<li>OFF 大小写敏感  </li>
+</ul>
+<p>lower_case_table_names 表示表名是否大小写敏感，可以修改。</p>
+<ul>
+<li>lower_case_table_names = 0时，mysql会根据表名直接操作，大小写敏感。</li>
+<li>lower_case_table_names = 1时，mysql会先把表名转为小写，再执行操作。 </li>
+</ul>
+<p>设置lower_case_table_names的值,打开my.cnf文件，加入以下语句后重启。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lower_case_table_names = 0 或 lower_case_table_names = 1</span><br></pre></td></tr></table></figure></p>
+<h2 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h2><p>mysql中varchar类型的字符集一般设置成utf8，然而mysql默认是对大小写不敏感（不区分），如果想要mysql区分大小写需要设置排序规则，规则详解如下：</p>
+<ol>
+<li>utf8_bin将字符串中的每一个字符用二进制数据存储，区分大小写。</li>
+<li>utf8_genera_ci不区分大小写，ci为case insensitive的缩写，即大小写不敏感。</li>
+<li>utf8_general_cs区分大小写，cs为case sensitive的缩写，即大小写敏感。</li>
+</ol>
+<p>用utf8_genera_ci没有区分大小写，导致这个字段的内容区分大小写时出问题，比如作为区分大小写的code或者验证码时就出问题了。<br>utf8_general_cs这个选项一般没有，所以只能用utf8_bin区分大小写</p>
+<h2 id="方式三"><a href="#方式三" class="headerlink" title="方式三"></a>方式三</h2><p>mysql在查询时显示声明排序规则<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> case_test <span class="keyword">WHERE</span> word <span class="keyword">LIKE</span> <span class="keyword">COLLATE</span> atin1_bin <span class="string">'F%'</span>；</span><br><span class="line"># <span class="keyword">or</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> case_test <span class="keyword">WHERE</span> word <span class="keyword">LIKE</span> <span class="string">'F%'</span> <span class="keyword">COLLATE</span> latin1_bin;</span><br></pre></td></tr></table></figure></p>
+<h2 id="方式四"><a href="#方式四" class="headerlink" title="方式四"></a>方式四</h2><p>mysql查询区分大小写也可以：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>  * <span class="keyword">from</span>  table_name <span class="keyword">where</span>  <span class="built_in">binary</span>  a <span class="keyword">like</span>  <span class="string">'a%'</span></span><br></pre></td></tr></table></figure></p>
+<p>也可以在建表时，加以标识<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span>  <span class="keyword">table</span>  table_name(</span><br><span class="line">     a <span class="built_in">varchar</span> (<span class="number">20</span>) <span class="built_in">binary</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://wangzhipeng.github.io/2018/09/16/go/" data-id="cjmeegfcj00012nhet7ykjfo9" class="article-share-link">Share</a>
+      <a data-url="https://wangzhipeng.github.io/2018/09/18/mysql大小写/" data-id="cjuzlpgn90001xthe8o4hekoi" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
     </footer>
   </div>
   
@@ -166,15 +260,29 @@ ga('send', 'pageview');
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/mysql/" style="font-size: 10px;">mysql</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li></ul>
     </div>
   </div>
 
@@ -187,11 +295,15 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2018/10/17/rancheros/">rancheros</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/23/AutoScalingWorker/">AutoScalingWorker</a>
           </li>
         
           <li>
-            <a href="/2018/09/16/go/">go</a>
+            <a href="/2018/09/18/mysql大小写/">关于MySql区分大小写</a>
           </li>
         
       </ul>
@@ -206,7 +318,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 William Wang<br>
+      &copy; 2019 William Wang<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

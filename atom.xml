@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangzhipeng.github.io/"/>
-  <updated>2019-04-27T14:32:30.693Z</updated>
+  <updated>2019-07-27T15:06:05.744Z</updated>
   <id>https://wangzhipeng.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>rancheros</title>
-    <link href="https://wangzhipeng.github.io/2018/10/17/rancheros/"/>
-    <id>https://wangzhipeng.github.io/2018/10/17/rancheros/</id>
-    <published>2018-10-17T15:00:17.000Z</published>
-    <updated>2019-04-27T14:32:30.693Z</updated>
+    <title>ubuntu 18.04中vscode字体突然变丑了</title>
+    <link href="https://wangzhipeng.github.io/2019/07/27/vscodeFontFamily/"/>
+    <id>https://wangzhipeng.github.io/2019/07/27/vscodeFontFamily/</id>
+    <published>2019-07-27T04:06:49.000Z</published>
+    <updated>2019-07-27T15:06:05.744Z</updated>
     
     <summary type="html">
     
@@ -35,6 +35,32 @@
     
     </summary>
     
+    
+      <category term="vscode" scheme="https://wangzhipeng.github.io/tags/vscode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rancheros</title>
+    <link href="https://wangzhipeng.github.io/2018/10/17/rancheros/"/>
+    <id>https://wangzhipeng.github.io/2018/10/17/rancheros/</id>
+    <published>2018-10-17T15:00:17.000Z</published>
+    <updated>2019-07-27T15:09:41.710Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="rancher" scheme="https://wangzhipeng.github.io/tags/rancher/"/>
     
   </entry>
   
@@ -43,7 +69,7 @@
     <link href="https://wangzhipeng.github.io/2018/09/23/AutoScalingWorker/"/>
     <id>https://wangzhipeng.github.io/2018/09/23/AutoScalingWorker/</id>
     <published>2018-09-23T04:34:04.000Z</published>
-    <updated>2018-09-23T05:12:16.011Z</updated>
+    <updated>2019-07-27T15:10:52.307Z</updated>
     
     <summary type="html">
     
@@ -57,6 +83,8 @@
     
     </summary>
     
+    
+      <category term="golang" scheme="https://wangzhipeng.github.io/tags/golang/"/>
     
   </entry>
   

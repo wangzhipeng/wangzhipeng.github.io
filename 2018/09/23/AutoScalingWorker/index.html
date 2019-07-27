@@ -29,17 +29,18 @@ ga('send', 'pageview');
   
   <title>AutoScalingWorker | 探索 前行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="介绍传统基于channel的生产者与消费者模式，采用固定消费者个数形式，在面对生产数量猛增情况时，不能做到动态伸缩，容易致使队列积压。基于此 autoscalingworker 采用检测队列积压情况动态创建与销毁worker，来保证消费与避免性能的浪费。 探索首先我们需要定义我们Worker的上下限，基于多少队列积压情况进行扩容与缩容。代码如下：12345678910111213type Auto">
+  <meta name="description" content="介绍传统基于channel的生产者与消费者模式，采用固定消费者个数形式，在面对生产数量猛增情况时，不能做到动态伸缩，容易致使队列积压。基于此 autoscalingworker 采用检测队列积压情况动态创建与销毁worker，来保证消费与避免性能的浪费。 探索首先我们需要定义我们Worker的上下限，基于多少队列积压情况进行扩容与缩容。代码如下： 12345678910111213type Aut">
+<meta name="keywords" content="golang">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AutoScalingWorker">
 <meta property="og:url" content="https://wangzhipeng.github.io/2018/09/23/AutoScalingWorker/index.html">
 <meta property="og:site_name" content="探索 前行">
-<meta property="og:description" content="介绍传统基于channel的生产者与消费者模式，采用固定消费者个数形式，在面对生产数量猛增情况时，不能做到动态伸缩，容易致使队列积压。基于此 autoscalingworker 采用检测队列积压情况动态创建与销毁worker，来保证消费与避免性能的浪费。 探索首先我们需要定义我们Worker的上下限，基于多少队列积压情况进行扩容与缩容。代码如下：12345678910111213type Auto">
+<meta property="og:description" content="介绍传统基于channel的生产者与消费者模式，采用固定消费者个数形式，在面对生产数量猛增情况时，不能做到动态伸缩，容易致使队列积压。基于此 autoscalingworker 采用检测队列积压情况动态创建与销毁worker，来保证消费与避免性能的浪费。 探索首先我们需要定义我们Worker的上下限，基于多少队列积压情况进行扩容与缩容。代码如下： 12345678910111213type Aut">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-23T05:12:16.011Z">
+<meta property="og:updated_time" content="2019-07-27T15:10:52.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AutoScalingWorker">
-<meta name="twitter:description" content="介绍传统基于channel的生产者与消费者模式，采用固定消费者个数形式，在面对生产数量猛增情况时，不能做到动态伸缩，容易致使队列积压。基于此 autoscalingworker 采用检测队列积压情况动态创建与销毁worker，来保证消费与避免性能的浪费。 探索首先我们需要定义我们Worker的上下限，基于多少队列积压情况进行扩容与缩容。代码如下：12345678910111213type Auto">
+<meta name="twitter:description" content="介绍传统基于channel的生产者与消费者模式，采用固定消费者个数形式，在面对生产数量猛增情况时，不能做到动态伸缩，容易致使队列积压。基于此 autoscalingworker 采用检测队列积压情况动态创建与销毁worker，来保证消费与避免性能的浪费。 探索首先我们需要定义我们Worker的上下限，基于多少队列积压情况进行扩容与缩容。代码如下： 12345678910111213type Aut">
   
     <link rel="alternate" href="/atom.xml" title="探索 前行" type="application/atom+xml">
   
@@ -109,7 +110,8 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>传统基于channel的生产者与消费者模式，采用固定消费者个数形式，在面对生产数量猛增情况时，不能做到动态伸缩，容易致使队列积压。基于此 autoscalingworker 采用检测队列积压情况动态创建与销毁worker，来保证消费与避免性能的浪费。</p>
-<h2 id="探索"><a href="#探索" class="headerlink" title="探索"></a>探索</h2><p>首先我们需要定义我们Worker的上下限，基于多少队列积压情况进行扩容与缩容。代码如下：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> AutoScalingWorker <span class="keyword">struct</span> &#123;</span><br><span class="line">	MinWorker     <span class="keyword">int</span></span><br><span class="line">	MaxWorker     <span class="keyword">int</span></span><br><span class="line">	QueueDepth    <span class="keyword">int</span></span><br><span class="line">	CurrentWorker <span class="keyword">int</span></span><br><span class="line">	Process       Process</span><br><span class="line">	Queue         <span class="keyword">chan</span> <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">	Interval      time.Duration</span><br><span class="line"></span><br><span class="line">	stop       <span class="keyword">chan</span> <span class="keyword">int</span></span><br><span class="line">	workerStop <span class="keyword">chan</span> <span class="keyword">int</span></span><br><span class="line">	lock       sync.RWMutex</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="探索"><a href="#探索" class="headerlink" title="探索"></a>探索</h2><p>首先我们需要定义我们Worker的上下限，基于多少队列积压情况进行扩容与缩容。代码如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> AutoScalingWorker <span class="keyword">struct</span> &#123;</span><br><span class="line">	MinWorker     <span class="keyword">int</span></span><br><span class="line">	MaxWorker     <span class="keyword">int</span></span><br><span class="line">	QueueDepth    <span class="keyword">int</span></span><br><span class="line">	CurrentWorker <span class="keyword">int</span></span><br><span class="line">	Process       Process</span><br><span class="line">	Queue         <span class="keyword">chan</span> <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">	Interval      time.Duration</span><br><span class="line"></span><br><span class="line">	stop       <span class="keyword">chan</span> <span class="keyword">int</span></span><br><span class="line">	workerStop <span class="keyword">chan</span> <span class="keyword">int</span></span><br><span class="line">	lock       sync.RWMutex</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>有了这些后，我们要做的就是循环检查我们的队列进行扩容与缩容了。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(auto *AutoScalingWorker)</span> <span class="title">Start</span><span class="params">()</span></span> &#123;</span><br><span class="line">	auto.workerStop = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">	auto.stop = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line"></span><br><span class="line">	t := time.NewTicker(auto.Interval)</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> &lt;-t.C:</span><br><span class="line">			<span class="keyword">if</span> <span class="built_in">len</span>(auto.Queue) &gt; auto.QueueDepth &#123;</span><br><span class="line">				auto.Expansion()</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				auto.Shrinkage()</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">case</span> &lt;-auto.stop:</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在golang中对worker进行扩容很简单，只需使用关键子<code>go</code>就可以了，但是对以运行的<code>goroutines</code> 并没有kill办法，如果让其退出，只能等待起运行结束。此时，我们就需要借用golang中的另一神器<code>channel</code>了，将我们的close信号传递进goroutines中。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(auto *AutoScalingWorker)</span> <span class="title">job</span><span class="params">()</span></span> &#123;</span><br><span class="line">	auto.lock.Lock()</span><br><span class="line">	auto.CurrentWorker = auto.CurrentWorker + <span class="number">1</span></span><br><span class="line">	auto.lock.Unlock()</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> &lt;-auto.workerStop:</span><br><span class="line">			<span class="keyword">goto</span> <span class="built_in">close</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">case</span> data, ok := &lt;-auto.Queue:</span><br><span class="line">			<span class="keyword">if</span> !ok &#123;</span><br><span class="line">				<span class="keyword">goto</span> <span class="built_in">close</span></span><br><span class="line">			&#125;</span><br><span class="line">			auto.Process(data)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">close</span>:</span><br><span class="line">	auto.lock.Lock()</span><br><span class="line">	auto.CurrentWorker = auto.CurrentWorker - <span class="number">1</span></span><br><span class="line">	auto.lock.Unlock()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -120,9 +122,11 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://wangzhipeng.github.io/2018/09/23/AutoScalingWorker/" data-id="cjuzlpgn10000xthe9d97b6f7" class="article-share-link">Share</a>
+      <a data-url="https://wangzhipeng.github.io/2018/09/23/AutoScalingWorker/" data-id="cjylo4q1w00006dhezmufzhfm" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
+
     </footer>
   </div>
   
@@ -160,7 +164,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rancher/">rancher</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
     </div>
   </div>
 
@@ -170,7 +174,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/mysql/" style="font-size: 10px;">mysql</a>
+      <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/rancher/" style="font-size: 10px;">rancher</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
     </div>
   </div>
 
@@ -179,7 +183,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li></ul>
     </div>
   </div>
 
@@ -190,6 +194,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/07/27/vscodeFontFamily/">ubuntu 18.04中vscode字体突然变丑了</a>
+          </li>
         
           <li>
             <a href="/2018/10/17/rancheros/">rancheros</a>

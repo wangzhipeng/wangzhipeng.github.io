@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-125861349-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <!-- Google AdSense -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2270522402180498",
+    enable_page_level_ads: true
+  });
+</script>
+<!-- End Google AdSense -->
+  
+  <title>NetworkManager介绍 | 探索 前行</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍NetworkManager是一个程序，用于为系统自动提供检测和配置以自动连接到网络。NetworkManager的功能对于无线和有线网络都非常有用。对于无线网络，NetworkManager首选已知的无线网络，并且能够切换到最可靠的网络。支持NetworkManager的应用程序可以从联机和脱机模式切换。与无线连接相比NetworkManager更喜欢有线连接，它支持调制解调器连接和某些类型">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NetworkManager介绍">
+<meta property="og:url" content="https://wangzhipeng.github.io/2019/10/13/NetworkManager介绍/index.html">
+<meta property="og:site_name" content="探索 前行">
+<meta property="og:description" content="介绍NetworkManager是一个程序，用于为系统自动提供检测和配置以自动连接到网络。NetworkManager的功能对于无线和有线网络都非常有用。对于无线网络，NetworkManager首选已知的无线网络，并且能够切换到最可靠的网络。支持NetworkManager的应用程序可以从联机和脱机模式切换。与无线连接相比NetworkManager更喜欢有线连接，它支持调制解调器连接和某些类型">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-14T14:44:06.851Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NetworkManager介绍">
+<meta name="twitter:description" content="介绍NetworkManager是一个程序，用于为系统自动提供检测和配置以自动连接到网络。NetworkManager的功能对于无线和有线网络都非常有用。对于无线网络，NetworkManager首选已知的无线网络，并且能够切换到最可靠的网络。支持NetworkManager的应用程序可以从联机和脱机模式切换。与无线连接相比NetworkManager更喜欢有线连接，它支持调制解调器连接和某些类型">
+  
+    <link rel="alternate" href="/atom.xml" title="探索 前行" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">探索 前行</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wangzhipeng.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-NetworkManager介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/13/NetworkManager介绍/" class="article-date">
+  <time datetime="2019-10-13T13:22:55.000Z" itemprop="datePublished">2019-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      NetworkManager介绍
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><a href="https://wiki.gnome.org/Projects/NetworkManager/" target="_blank" rel="noopener">NetworkManager</a>是一个程序，用于为系统自动提供检测和配置以自动连接到网络。NetworkManager的功能对于无线和有线网络都非常有用。对于无线网络，NetworkManager首选已知的无线网络，并且能够切换到最可靠的网络。支持NetworkManager的应用程序可以从联机和脱机模式切换。与无线连接相比NetworkManager更喜欢有线连接，它支持调制解调器连接和某些类型的VPN。NetworkManager最初是由Red Hat开发的，现在由GNOME项目托管。</p>
+<p>在linux中默认以systemd的形式运行，可以执行一下命令查看信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> systemctl  status network-manager.service</span><br><span class="line">输出类似以下信息：</span><br><span class="line">● NetworkManager.service - Network Manager</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/NetworkManager.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since Sun 2019-10-13 19:38:49 CST; 1h 21min ago</span><br><span class="line">     Docs: man:NetworkManager(8)</span><br><span class="line"> Main PID: 862 (NetworkManager)</span><br><span class="line">    Tasks: 4 (limit: 4915)</span><br><span class="line">   CGroup: /system.slice/NetworkManager.service</span><br><span class="line">           ├─ 862 /usr/sbin/NetworkManager --no-daemon</span><br><span class="line">           └─1930 /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper -pf /run/dhclient-wlp3s0.pid -lf /var/lib/NetworkManager/dhclient-9ec39b13-6d0c-468c-9a5b-fc4a2a6ea85e-wlp3s0.lease -cf /var/lib/NetworkManager/dhclient-wlp3s0.conf wlp3s0</span><br></pre></td></tr></table></figure>
+<p>NetworkManager分为两个程序，一个<code>/usr/sbin/NetworkManager</code>的服务端，一个<code>/sbin/dhclient</code>客户端。</p>
+<p>NetworkManager的配置工具有多种形式，如下：</p>
+<ol>
+<li>nmcli：命令行。这是最常用的工具。</li>
+<li>nmtui：在shell终端开启文本图形界面。</li>
+<li>nm-applet:GUI界面配置工具。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nm                                           (Executable link, 43kB)  nmtui           (Text User Interface for controlling NetworkManager)</span><br><span class="line">nm-applet                   (Network monitor and control GUI applet)  nmtui-connect   (Text User Interface for controlling NetworkManager)</span><br><span class="line">nm-connection-editor  (Network connection editor for NetworkManager)  nmtui-edit      (Text User Interface for controlling NetworkManager)</span><br><span class="line">nm-online      (Ask NetworkManager whether the network is connected)  nmtui-hostname  (Text User Interface for controlling NetworkManager)</span><br><span class="line">nmcli             (Command-line tool for controlling NetworkManager)</span><br></pre></td></tr></table></figure>
+<h2 id="nmcli使用方法"><a href="#nmcli使用方法" class="headerlink" title="nmcli使用方法"></a>nmcli使用方法</h2><p>nmcli使用方法非常类似linux ip命令、cisco交换机命令，并且支持tab补全，也可在命令最后通过-h、–help、help查看帮助。在nmcli中有2个命令最为常用：</p>
+<h3 id="nmcli-connection"><a href="#nmcli-connection" class="headerlink" title="nmcli connection"></a>nmcli connection</h3><p>译作<code>连接</code>，可理解为配置文件，相当于ifcfg-ethX。可以简写为nmcli c<br>connection有2种状态：<br>▷ 活跃（带颜色字体）：表示当前该connection生效<br>▷ 非活跃（正常字体）：表示当前该connection不生效</p>
+<h3 id="nmcli-device"><a href="#nmcli-device" class="headerlink" title="nmcli device"></a>nmcli device</h3><p>译作<code>设备</code>，可理解为实际存在的网卡（包括物理网卡和虚拟网卡）。可以简写为nmcli d<br>device有4种常见状态：<br>▷ connected：已被NM纳管，并且当前有活跃的connection<br>▷ disconnected：已被NM纳管，但是当前没有活跃的connection<br>▷ unmanaged：未被NM纳管<br>▷ unavailable：不可用，NM无法纳管，通常出现于网卡link为down的时候（比如ip link set ethX down）</p>
+<p>常用命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看ip（类似于ifconfig、ip addr）</span><br><span class="line">nmcli</span><br><span class="line"><span class="meta">#</span> 创建connection，配置静态ip（等同于配置ifcfg，其中BOOTPROTO=none，并ifup启动）</span><br><span class="line">nmcli c add type ethernet con-name ethX ifname ethX ipv4.addr 192.168.1.100/24 ipv4.gateway 192.168.1.1 ipv4.method manual</span><br><span class="line"><span class="meta">#</span> 创建connection，配置动态ip（等同于配置ifcfg，其中BOOTPROTO=dhcp，并ifup启动）</span><br><span class="line">nmcli c add type ethernet con-name ethX ifname ethX ipv4.method auto</span><br><span class="line"><span class="meta">#</span> 修改ip（非交互式）</span><br><span class="line">nmcli c modify ethX ipv4.addr '192.168.1.200/24'</span><br><span class="line">nmcli c up ethX</span><br><span class="line"><span class="meta">#</span> 修改ip（交互式）</span><br><span class="line">nmcli c edit ethX</span><br><span class="line"><span class="meta">nmcli&gt;</span> goto ipv4.addresses</span><br><span class="line">nmcli ipv4.addresses&gt; change</span><br><span class="line">Edit 'addresses' value: 192.168.1.200/24</span><br><span class="line">Do you also want to set 'ipv4.method' to 'manual'? [yes]: yes</span><br><span class="line">nmcli ipv4&gt; save</span><br><span class="line">nmcli ipv4&gt; activate</span><br><span class="line">nmcli ipv4&gt; quit</span><br><span class="line"><span class="meta">#</span> 启用connection（相当于ifup）</span><br><span class="line">nmcli c up ethX</span><br><span class="line"><span class="meta">#</span> 停止connection（相当于ifdown）</span><br><span class="line">nmcli c down</span><br><span class="line"><span class="meta">#</span> 删除connection（类似于ifdown并删除ifcfg）</span><br><span class="line">nmcli c delete ethX</span><br><span class="line"><span class="meta">#</span> 查看connection列表</span><br><span class="line">nmcli c show</span><br><span class="line"><span class="meta">#</span> 查看connection详细信息</span><br><span class="line">nmcli c show ethX</span><br><span class="line"><span class="meta">#</span> 重载所有ifcfg或route到connection（不会立即生效）</span><br><span class="line">nmcli c reload</span><br><span class="line"><span class="meta">#</span> 重载指定ifcfg或route到connection（不会立即生效）</span><br><span class="line">nmcli c load /etc/sysconfig/network-scripts/ifcfg-ethX</span><br><span class="line">nmcli c load /etc/sysconfig/network-scripts/route-ethX</span><br><span class="line"><span class="meta">#</span> 立即生效connection，有3种方法</span><br><span class="line">nmcli c up ethX</span><br><span class="line">nmcli d reapply ethX</span><br><span class="line">nmcli d connect ethX</span><br><span class="line"><span class="meta">#</span> 查看device列表</span><br><span class="line">nmcli d</span><br><span class="line"><span class="meta">#</span> 查看所有device详细信息</span><br><span class="line">nmcli d show</span><br><span class="line"><span class="meta">#</span> 查看指定device的详细信息</span><br><span class="line">nmcli d show ethX</span><br><span class="line"><span class="meta">#</span> 激活网卡</span><br><span class="line">nmcli d connect ethX</span><br><span class="line"><span class="meta">#</span> 关闭无线网络（NM默认启用无线网络）</span><br><span class="line">nmcli r all off</span><br><span class="line"><span class="meta">#</span> 查看NM纳管状态</span><br><span class="line">nmcli n</span><br><span class="line"><span class="meta">#</span> 开启NM纳管</span><br><span class="line">nmcli n on</span><br><span class="line"><span class="meta">#</span> 关闭NM纳管（谨慎执行）</span><br><span class="line">nmcli n off</span><br><span class="line"><span class="meta">#</span> 监听事件</span><br><span class="line">nmcli m</span><br><span class="line"><span class="meta">#</span> 查看NM本身状态</span><br><span class="line">nmcli</span><br><span class="line"><span class="meta">#</span> 检测NM是否在线可用</span><br><span class="line">nm-online</span><br></pre></td></tr></table></figure>
+<p>例子：创建一个连接（connection）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli c add type ethernet con-name ethX-test ifname ethX ipv4.addresses '192.168.1.100/24,92.168.1.101/32' ipv4.routes '10.0.0.0/8 192.168.1.10,192.168.0.0/16 192.168.1.11' ipv4.gateway 192.168.1.254 ipv4.dns '8.8.8.8,4.4.4.4' ipv4.method manual</span><br></pre></td></tr></table></figure>
+<p>▪ type ethernet：创建连接时候必须指定类型，类型有很多，可以通过 nmcli c add type-h看到，这里指定为ethernet。<br>▪ con-name ethX ifname ethX：第一个ethX表示连接（connection）的名字，这个名字可以任意定义，无需和网卡名相同；第二个ethX表示网卡名，这个ethX必须是在 nmcli d里能看到的。<br>▪ ipv4.addresses ‘192.168.1.100/24,192.168.1.101/32’：配置2个ip地址，分别为192.168.1.100/24和192.168.1.101/32<br>▪ ipv4.gateway 192.168.1.254：网关为192.168.1.254<br>▪ ipv4.dns ‘8.8.8.8,4.4.4.4’：dns为8.8.8.8和4.4.4.4<br>▪ ipv4.method manual：配置静态IP</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MjM5NzAzMTY4NQ==&amp;mid=2653932241&amp;idx=1&amp;sn=7af8ae2f6283fb67eb9e1cba1e6b277c&amp;chksm=bd3b50bb8a4cd9adf9464d08473306ff57b9fc020d6fe17d01c7383f6170ffcaf11523c0f127&amp;mpshare=1&amp;scene=1&amp;srcid=12190aFP8uJWej5Imbhxiyzv#rd" target="_blank" rel="noopener">基于RHEL8/CentOS8的网络IP配置详解</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/NetworkManager" target="_blank" rel="noopener">Arch NetworkManager</a></li>
+<li><a href="https://wiki.gnome.org/Projects/NetworkManager/" target="_blank" rel="noopener">gnome NetworkManager/</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wangzhipeng.github.io/2019/10/13/NetworkManager介绍/" data-id="ck1qj4eto0003m4hexg6wrl2h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/27/vscodeFontFamily/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ubuntu 18.04中vscode字体突然变丑了</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rancher/">rancher</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/rancher/" style="font-size: 10px;">rancher</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/13/NetworkManager介绍/">NetworkManager介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/27/vscodeFontFamily/">ubuntu 18.04中vscode字体突然变丑了</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/rancheros/">rancheros</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/23/AutoScalingWorker/">AutoScalingWorker</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/18/mysql大小写/">关于MySql区分大小写</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 William Wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

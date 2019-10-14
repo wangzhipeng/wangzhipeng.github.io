@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangzhipeng.github.io/"/>
-  <updated>2019-07-27T15:06:05.744Z</updated>
+  <updated>2019-10-14T14:44:06.851Z</updated>
   <id>https://wangzhipeng.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NetworkManager介绍</title>
+    <link href="https://wangzhipeng.github.io/2019/10/13/NetworkManager%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://wangzhipeng.github.io/2019/10/13/NetworkManager介绍/</id>
+    <published>2019-10-13T13:22:55.000Z</published>
+    <updated>2019-10-14T14:44:06.851Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://wangzhipeng.github.io/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>ubuntu 18.04中vscode字体突然变丑了</title>
@@ -45,7 +69,7 @@
     <link href="https://wangzhipeng.github.io/2018/10/17/rancheros/"/>
     <id>https://wangzhipeng.github.io/2018/10/17/rancheros/</id>
     <published>2018-10-17T15:00:17.000Z</published>
-    <updated>2019-07-27T15:09:41.710Z</updated>
+    <updated>2019-10-13T13:23:47.054Z</updated>
     
     <summary type="html">
     
@@ -93,7 +117,7 @@
     <link href="https://wangzhipeng.github.io/2018/09/18/mysql%E5%A4%A7%E5%B0%8F%E5%86%99/"/>
     <id>https://wangzhipeng.github.io/2018/09/18/mysql大小写/</id>
     <published>2018-09-18T12:10:46.000Z</published>
-    <updated>2018-10-17T15:02:58.549Z</updated>
+    <updated>2019-10-13T13:24:42.457Z</updated>
     
     <summary type="html">
     

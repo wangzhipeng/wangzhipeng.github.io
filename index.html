@@ -84,6 +84,58 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-minikube" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/28/minikube/" class="article-date">
+  <time datetime="2019-11-28T13:37:05.000Z" itemprop="datePublished">2019-11-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/28/minikube/">minikube 安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在本地环境学习k8s的首选方案，个人还是推荐官方的minikube的方案，使用中和集群模式基本一致，下面就开始我们的k8s之旅吧。</p>
+<ol>
+<li>安装<a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank" rel="noopener">kubectl</a></li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/linux/amd64/kubectl</span><br><span class="line"></span><br><span class="line">chmod +x ./kubectl</span><br><span class="line"></span><br><span class="line">sudo mv ./kubectl /usr/local/bin/kubectl</span><br></pre></td></tr></table></figure>
+<ol>
+<li>安装<a href="https://kubernetes.io/docs/tasks/tools/install-minikube/" target="_blank" rel="noopener">minikube</a></li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \</span><br><span class="line">  &amp;&amp; chmod +x minikube</span><br><span class="line"></span><br><span class="line">sudo install minikube /usr/local/bin/</span><br></pre></td></tr></table></figure>
+<p>因为我的本机支持docker,这里我就不使用虚拟机安装k8s了，如果你的机器不支持docker，可以在安装时选用支持docker的<code>driver</code>，需要增加<code>--vm-driver</code>参数即可。另外k8s的镜像在国外被墙，这里我们使用<code>--image-repository</code>参数替换为国内的仓库，另外推荐加上仓库加速器<code>--registry-mirror</code>，这样最终的启动脚本就变为了如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube start --vm-driver=none --registry-mirror=https://registry.docker-cn.com --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers</span><br></pre></td></tr></table></figure>
+<p>只需要静静的等待完成即可，到此就完成了我们整个的安装，开始我们的探索之旅吧。</p>
+<p>对了，不要忘记验证一下pod的启动情况，方式如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kubectl get all -A</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wangzhipeng.github.io/2019/11/28/minikube/" data-id="ck3isokhx0003zyhevvfcqrw8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/">k8s</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-NetworkManager介绍" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/13/NetworkManager介绍/" class="article-date">
@@ -134,7 +186,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://wangzhipeng.github.io/2019/10/13/NetworkManager介绍/" data-id="ck1qj4eto0003m4hexg6wrl2h" class="article-share-link">Share</a>
+      <a data-url="https://wangzhipeng.github.io/2019/10/13/NetworkManager介绍/" data-id="ck3isokhs0001zyheql7frmqx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -185,7 +237,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://wangzhipeng.github.io/2019/07/27/vscodeFontFamily/" data-id="ck1qj4etr0005m4he70q9fpfc" class="article-share-link">Share</a>
+      <a data-url="https://wangzhipeng.github.io/2019/07/27/vscodeFontFamily/" data-id="ck3isoki30008zyheriu5jsc6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
@@ -231,7 +283,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://wangzhipeng.github.io/2018/10/17/rancheros/" data-id="ck1qj4etq0004m4hecp9eegoa" class="article-share-link">Share</a>
+      <a data-url="https://wangzhipeng.github.io/2018/10/17/rancheros/" data-id="ck3isoki10005zyhep9xp7l4m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rancher/">rancher</a></li></ul>
@@ -278,7 +330,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://wangzhipeng.github.io/2018/09/23/AutoScalingWorker/" data-id="ck1qj4ete0000m4herdd6lveu" class="article-share-link">Share</a>
+      <a data-url="https://wangzhipeng.github.io/2018/09/23/AutoScalingWorker/" data-id="ck3isokhl0000zyheb293wc6f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
@@ -357,7 +409,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://wangzhipeng.github.io/2018/09/18/mysql大小写/" data-id="ck1qj4etj0001m4he03xmuozx" class="article-share-link">Share</a>
+      <a data-url="https://wangzhipeng.github.io/2018/09/18/mysql大小写/" data-id="ck3isokhz0004zyheecjqmlhs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
@@ -382,7 +434,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rancher/">rancher</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/">k8s</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rancher/">rancher</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
     </div>
   </div>
 
@@ -392,7 +444,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/rancher/" style="font-size: 10px;">rancher</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
+      <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/k8s/" style="font-size: 10px;">k8s</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/rancher/" style="font-size: 10px;">rancher</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
     </div>
   </div>
 
@@ -401,7 +453,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li></ul>
     </div>
   </div>
 
@@ -412,6 +464,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/11/28/minikube/">minikube 安装</a>
+          </li>
         
           <li>
             <a href="/2019/10/13/NetworkManager介绍/">NetworkManager介绍</a>
@@ -427,10 +483,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2018/09/23/AutoScalingWorker/">AutoScalingWorker</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/18/mysql大小写/">关于MySql区分大小写</a>
           </li>
         
       </ul>

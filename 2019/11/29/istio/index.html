@@ -27,20 +27,20 @@ ga('send', 'pageview');
 </script>
 <!-- End Google AdSense -->
   
-  <title>ubuntu 18.04中vscode字体突然变丑了 | 探索 前行</title>
+  <title>istio 初体验 | 探索 前行</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景作为一个程序员,自己一直使用的环境是Ubuntu+vscode进行开发,最近一次系统更新,vscode的编辑器和shell的字体都变的异常难看起来,字间距变长了,而且还有点倾斜。这种情况估计是字体设置出现了问题，那我们就修改下吧。 行动这里引用Bluestorm的推荐Ubuntu中vscode的字体设置推荐，下面几种好看点的字体：  Courier New Source Code Pro We">
-<meta name="keywords" content="vscode">
+  <meta name="description" content="前面我们介绍了在本地安装k8s的方式，今天我们就体验下Mesh带给我们的刺激吧。这里我使用之前创建好的minikube集群，首先需要安装我们的istioctl工具,参考官网命令如下 将需要的工具和一些示例文件下载到本地 1curl -L https://istio.io/downloadIstio | sh - 进入下载的目录，这里我的版本是1.4.0 1cd istio-1.4.0 你会看到几个">
+<meta name="keywords" content="istio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu 18.04中vscode字体突然变丑了">
-<meta property="og:url" content="https://wangzhipeng.github.io/2019/07/27/vscodeFontFamily/index.html">
+<meta property="og:title" content="istio 初体验">
+<meta property="og:url" content="https://wangzhipeng.github.io/2019/11/29/istio/index.html">
 <meta property="og:site_name" content="探索 前行">
-<meta property="og:description" content="背景作为一个程序员,自己一直使用的环境是Ubuntu+vscode进行开发,最近一次系统更新,vscode的编辑器和shell的字体都变的异常难看起来,字间距变长了,而且还有点倾斜。这种情况估计是字体设置出现了问题，那我们就修改下吧。 行动这里引用Bluestorm的推荐Ubuntu中vscode的字体设置推荐，下面几种好看点的字体：  Courier New Source Code Pro We">
+<meta property="og:description" content="前面我们介绍了在本地安装k8s的方式，今天我们就体验下Mesh带给我们的刺激吧。这里我使用之前创建好的minikube集群，首先需要安装我们的istioctl工具,参考官网命令如下 将需要的工具和一些示例文件下载到本地 1curl -L https://istio.io/downloadIstio | sh - 进入下载的目录，这里我的版本是1.4.0 1cd istio-1.4.0 你会看到几个">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-27T15:06:05.744Z">
+<meta property="og:updated_time" content="2019-11-29T12:48:42.787Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ubuntu 18.04中vscode字体突然变丑了">
-<meta name="twitter:description" content="背景作为一个程序员,自己一直使用的环境是Ubuntu+vscode进行开发,最近一次系统更新,vscode的编辑器和shell的字体都变的异常难看起来,字间距变长了,而且还有点倾斜。这种情况估计是字体设置出现了问题，那我们就修改下吧。 行动这里引用Bluestorm的推荐Ubuntu中vscode的字体设置推荐，下面几种好看点的字体：  Courier New Source Code Pro We">
+<meta name="twitter:title" content="istio 初体验">
+<meta name="twitter:description" content="前面我们介绍了在本地安装k8s的方式，今天我们就体验下Mesh带给我们的刺激吧。这里我使用之前创建好的minikube集群，首先需要安装我们的istioctl工具,参考官网命令如下 将需要的工具和一些示例文件下载到本地 1curl -L https://istio.io/downloadIstio | sh - 进入下载的目录，这里我的版本是1.4.0 1cd istio-1.4.0 你会看到几个">
   
     <link rel="alternate" href="/atom.xml" title="探索 前行" type="application/atom+xml">
   
@@ -87,10 +87,10 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-vscodeFontFamily" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-istio" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/07/27/vscodeFontFamily/" class="article-date">
-  <time datetime="2019-07-27T04:06:49.000Z" itemprop="datePublished">2019-07-27</time>
+    <a href="/2019/11/29/istio/" class="article-date">
+  <time datetime="2019-11-29T11:31:15.000Z" itemprop="datePublished">2019-11-29</time>
 </a>
     
   </div>
@@ -101,7 +101,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      ubuntu 18.04中vscode字体突然变丑了
+      istio 初体验
     </h1>
   
 
@@ -109,27 +109,23 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>作为一个程序员,自己一直使用的环境是Ubuntu+vscode进行开发,最近一次系统更新,vscode的编辑器和shell的字体都变的异常难看起来,字间距变长了,而且还有点倾斜。这种情况估计是字体设置出现了问题，那我们就修改下吧。</p>
-<h2 id="行动"><a href="#行动" class="headerlink" title="行动"></a>行动</h2><p>这里引用<a href="https://www.cnblogs.com/bluestorm/p/10340920.html" target="_blank" rel="noopener">Bluestorm</a>的推荐Ubuntu中vscode的字体设置推荐，下面几种好看点的字体：</p>
-<ol>
-<li>Courier New</li>
-<li>Source Code Pro</li>
-<li>WenQuanYi Micro Hei</li>
-<li>WenQuanYi Micro Hei Mono</li>
-<li>Ubuntu</li>
-<li>Droid Sans Mono</li>
-</ol>
-<p>我们可以打开vscode的字体设置填入相应喜欢的字体就可以了。</p>
-<p>查看系统中安装了的字体方法，如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fc-list 查看所有的字体</span><br><span class="line">fc-list :lang=zh 查看所有的中文字体</span><br></pre></td></tr></table></figure>
+        <p>前面我们介绍了在本地安装k8s的方式，今天我们就体验下Mesh带给我们的刺激吧。<br>这里我使用之前创建好的minikube集群，首先需要安装我们的<code>istioctl</code>工具,<a href="https://istio.io/docs/setup/getting-started/" target="_blank" rel="noopener">参考官网</a>命令如下</p>
+<p>将需要的工具和一些示例文件下载到本地</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://istio.io/downloadIstio | sh -</span><br></pre></td></tr></table></figure>
+<p>进入下载的目录，这里我的版本是1.4.0</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd istio-1.4.0</span><br></pre></td></tr></table></figure>
+<p>你会看到几个文件夹，<code>bin</code>这里放着我们的<code>istioctl</code>工具，需要将工具移动到<code>bin</code>目录；<code>install</code>文件夹存放这我们的安装yaml文件；<code>samples</code>存放的是一下示例程序，供我们学习使用。</p>
+<p><a href="https://istio.io/docs/setup/getting-started/#install" target="_blank" rel="noopener">安装</a><code>istio</code>，istio有几个默认的配置文件组合，这里我们学习使用，就选择一个功能比较多的<code>demo</code>模式，其他模式<a href="https://istio.io/docs/setup/additional-setup/config-profiles/" target="_blank" rel="noopener">参照</a>,自定义配置<a href="https://istio.io/docs/setup/install/istioctl/" target="_blank" rel="noopener">参照</a>.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">istioctl manifest apply --set profile=demo</span><br></pre></td></tr></table></figure>
+<p>到此，整个安装就结束了。这时要下载一些镜像，就看大家网速了。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://wangzhipeng.github.io/2019/07/27/vscodeFontFamily/" data-id="ck3k522at0009lgheyjkc5ygs" class="article-share-link">Share</a>
+      <a data-url="https://wangzhipeng.github.io/2019/11/29/istio/" data-id="ck3k522a70000lghen5pzxewj" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/istio/">istio</a></li></ul>
 
     </footer>
   </div>
@@ -137,19 +133,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/2019/10/13/NetworkManager介绍/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          NetworkManager介绍
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/10/17/rancheros/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/11/28/minikube/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">rancheros</div>
+      <div class="article-nav-title">minikube 安装</div>
     </a>
   
 </nav>
